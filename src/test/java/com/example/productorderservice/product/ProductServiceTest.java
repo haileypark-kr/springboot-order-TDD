@@ -21,6 +21,8 @@ class ProductServiceTest {
 		productService.addProduct(request);
 	}
 
+	// API 요청
+
 	private static AddProductRequest 상품등록요청_생성() {
 
 		String name = "상품명";
