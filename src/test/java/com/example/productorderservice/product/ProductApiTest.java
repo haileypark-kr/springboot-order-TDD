@@ -6,6 +6,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.example.productorderservice.ApiTest;
 import com.example.productorderservice.dto.AddProductRequest;
@@ -22,6 +23,7 @@ class ProductApiTest extends ApiTest {
 	private ProductService productService;
 
 	@Test
+	@Transactional
 	void 상품등록() {
 		final AddProductRequest request = 상품등록요청_생성();
 
