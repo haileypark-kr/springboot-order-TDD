@@ -5,6 +5,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.example.productorderservice.dto.AddProductRequest;
 import com.example.productorderservice.dto.GetProductResponse;
+import com.example.productorderservice.dto.UpdateProductRequest;
 import com.example.productorderservice.model.Product;
 import com.example.productorderservice.port.ProductPort;
 
@@ -29,5 +30,12 @@ public class ProductService {
 			product.getName(),
 			product.getPrice(),
 			product.getDiscountPolicy());
+	}
+
+	public void updateProduct(Long productId, UpdateProductRequest request) {
+		Product product = productPort.getProduct(productId);
+		product.update(request.name(), request.price(), request.discountPolicy());
+
+		productPort.save(product);
 	}
 }
