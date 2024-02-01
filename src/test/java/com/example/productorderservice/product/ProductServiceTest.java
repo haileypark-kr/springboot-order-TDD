@@ -11,7 +11,6 @@ import org.springframework.boot.test.context.SpringBootTest;
 import com.example.productorderservice.dto.AddProductRequest;
 import com.example.productorderservice.dto.GetProductResponse;
 import com.example.productorderservice.service.ProductService;
-import com.example.productorderservice.type.DiscountPolicy;
 
 @SpringBootTest
 class ProductServiceTest {
@@ -22,7 +21,7 @@ class ProductServiceTest {
 	@Test
 	@Transactional
 	void 상품등록() throws Exception {
-		final AddProductRequest request = 상품등록요청_생성();
+		final AddProductRequest request = ProductTestSteps.상품등록요청_생성();
 
 		productService.addProduct(request);
 	}
@@ -31,7 +30,7 @@ class ProductServiceTest {
 	@Transactional
 	void 상품조회() throws Exception {
 		// given - 상품 등록
-		productService.addProduct(ProductApiTest.상품등록요청_생성());
+		productService.addProduct(ProductTestSteps.상품등록요청_생성());
 		final Long productId = 1L;
 
 		// when - 상품 조회
@@ -39,16 +38,5 @@ class ProductServiceTest {
 
 		// then - 상품 응답 검증
 		assertThat(response).isNotNull();
-	}
-
-	// API 요청
-
-	private static AddProductRequest 상품등록요청_생성() {
-
-		String name = "상품명";
-		int price = 10000;
-		DiscountPolicy discountPolicy = DiscountPolicy.NONE;
-
-		return new AddProductRequest(name, price, discountPolicy);
 	}
 }
