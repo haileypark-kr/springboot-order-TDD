@@ -33,7 +33,7 @@ class ProductApiTest extends ApiTest {
 		assertThat(response.statusCode()).isEqualTo(HttpStatus.CREATED.value());
 	}
 
-	private static ExtractableResponse<Response> 상품등록_요청(AddProductRequest request) {
+	public static ExtractableResponse<Response> 상품등록_요청(AddProductRequest request) {
 		return RestAssured
 			.given().log().all() // 요청 로그를 남기겠다. Request method, URI, params, headers, body 등.
 			.contentType(MediaType.APPLICATION_JSON_VALUE)
@@ -44,9 +44,7 @@ class ProductApiTest extends ApiTest {
 			.extract();
 	}
 
-	// API 요청
-
-	private static AddProductRequest 상품등록요청_생성() {
+	public static AddProductRequest 상품등록요청_생성() {
 
 		String name = "상품명";
 		int price = 10000;
