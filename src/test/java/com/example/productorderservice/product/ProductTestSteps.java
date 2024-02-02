@@ -3,6 +3,7 @@ package com.example.productorderservice.product;
 import org.springframework.http.MediaType;
 
 import com.example.productorderservice.dto.AddProductRequest;
+import com.example.productorderservice.dto.UpdateProductRequest;
 import com.example.productorderservice.type.DiscountPolicy;
 
 import io.restassured.RestAssured;
@@ -17,6 +18,15 @@ public class ProductTestSteps {
 		DiscountPolicy discountPolicy = DiscountPolicy.NONE;
 
 		return new AddProductRequest(name, price, discountPolicy);
+	}
+
+	public static UpdateProductRequest 상품수정요청_생성() {
+
+		String name = "상품명수정";
+		int price = 20000;
+		DiscountPolicy discountPolicy = DiscountPolicy.NONE;
+
+		return new UpdateProductRequest(name, price, discountPolicy);
 	}
 
 	public static ExtractableResponse<Response> 상품등록_요청(AddProductRequest request) {
@@ -36,6 +46,18 @@ public class ProductTestSteps {
 			.contentType(MediaType.APPLICATION_JSON_VALUE)
 			.when()
 			.get("/products/" + id)
+			.then().log().all()
+			.extract();
+		return response;
+	}
+
+	public static ExtractableResponse<Response> 상품수정_요청(Long id, UpdateProductRequest request) {
+		ExtractableResponse<Response> response = RestAssured
+			.given().log().all()
+			.contentType(MediaType.APPLICATION_JSON_VALUE)
+			.body(request)
+			.when()
+			.post("/products/" + id)
 			.then().log().all()
 			.extract();
 		return response;

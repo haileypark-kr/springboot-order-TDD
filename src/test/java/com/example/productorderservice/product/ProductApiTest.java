@@ -44,4 +44,20 @@ class ProductApiTest extends ApiTest {
 		assertThat(response.jsonPath().getString("name")).isEqualTo("상품명");
 	}
 
+	@Test
+	@Transactional
+	public void 상품수정() throws Exception {
+		// given
+		ProductTestSteps.상품등록_요청(ProductTestSteps.상품등록요청_생성());
+		Long id = 1L;
+
+		// when
+		ProductTestSteps.상품수정_요청(id, ProductTestSteps.상품수정요청_생성());
+		ExtractableResponse<Response> response = ProductTestSteps.상품조회_요청(id);
+
+		// then
+		assertThat(response.statusCode()).isEqualTo(HttpStatus.OK.value());
+		assertThat(response.jsonPath().getString("name")).isEqualTo(productService.getProduct(1L).name());
+	}
+
 }

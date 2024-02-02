@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.example.productorderservice.dto.AddProductRequest;
 import com.example.productorderservice.dto.GetProductResponse;
+import com.example.productorderservice.dto.UpdateProductRequest;
 import com.example.productorderservice.service.ProductService;
 
 import lombok.RequiredArgsConstructor;
@@ -36,5 +37,14 @@ public class ProductController {
 		GetProductResponse response = productService.getProduct(productId);
 
 		return ResponseEntity.status(HttpStatus.OK).body(response);
+	}
+
+	@PostMapping("/{productId}")
+	public ResponseEntity<Void> update(@PathVariable final Long productId,
+		@RequestBody final UpdateProductRequest request) {
+
+		productService.updateProduct(productId, request);
+
+		return ResponseEntity.status(HttpStatus.OK).build();
 	}
 }
