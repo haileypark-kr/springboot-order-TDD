@@ -27,9 +27,6 @@ public class OrderServiceTest {
 
 		orderService.createOrder(OrderTestSteps.상품주문요청_생성());
 
-		// when
-
-		// then
 	}
 
 }

@@ -1,6 +1,12 @@
 package com.example.productorderservice.order;
 
+import org.springframework.http.MediaType;
+
 import com.example.productorderservice.dto.CreateOrderRequest;
+
+import io.restassured.RestAssured;
+import io.restassured.response.ExtractableResponse;
+import io.restassured.response.Response;
 
 public class OrderTestSteps {
 
@@ -9,6 +15,17 @@ public class OrderTestSteps {
 		final int quantity = 2;
 		return new CreateOrderRequest(productId, quantity);
 	}
+
+	public static ExtractableResponse<Response> 상품주문_요청(CreateOrderRequest orderRequest) {
+		return RestAssured.given().log().all()
+			.contentType(MediaType.APPLICATION_JSON_VALUE)
+			.body(orderRequest)
+			.when()
+			.post("/orders")
+			.then().log().all()
+			.extract();
+	}
+
 	//
 	// public static ExtractableResponse<Response> 상품등록_요청(AddProductRequest request) {
 	// 	return RestAssured
