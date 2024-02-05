@@ -32,10 +32,6 @@ public class Payment {
 		this.cardNumber = cardNumber;
 	}
 
-	public void assignId(Long id) {
-		this.id = id;
-	}
-
 	public Long getId() {
 		return id;
 	}

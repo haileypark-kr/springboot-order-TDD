@@ -58,4 +58,31 @@ class ProductServiceTest {
 		assertThat(response.name()).isEqualTo(request.name());
 		assertThat(response.price()).isEqualTo(request.price());
 	}
+
+	@Test
+	@Transactional
+	public void 상품가격_할인NONE() throws Exception {
+		productService.addProduct(ProductTestSteps.상품등록요청_생성());
+
+		final Long productId = 1L;
+		final GetProductResponse response = productService.getProduct(productId);
+		assertThat(response.price()).isEqualTo(10000);
+	}
+
+	@Test
+	@Transactional
+	public void 상품가격_할인1000() throws Exception {
+
+		String name = "상품명";
+		int price = 10000;
+		DiscountPolicy discountPolicy = DiscountPolicy.FIX_1000_AMOUNT;
+
+		AddProductRequest request = new AddProductRequest(name, price, discountPolicy);
+
+		productService.addProduct(request);
+
+		final Long productId = 1L;
+		final GetProductResponse response = productService.getProduct(productId);
+		assertThat(response.price()).isEqualTo(9000);
+	}
 }
