@@ -37,4 +37,7 @@ public class Order {
 		this.quantity = quantity;
 	}
 
+	public int getTotalPrice() {
+		return product.getDiscountedPrice() * quantity;
+	}
 }

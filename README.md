@@ -15,6 +15,7 @@ TDD 적용까진 무리일지라도..
     - 3월: 2부
     - 4월: 3부
     - 5월: 4부
+- 이후? [더 자바, 애플리케이션을 테스트하는 다양한 방법](https://www.inflearn.com/course/the-java-application-test#curriculum) 수강
 
 ##### [단위 테스트] 책 목차
 
