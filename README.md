@@ -11,8 +11,8 @@ TDD 적용까진 무리일지라도..
       강의 수강
 - 2월 ~ 5월
     - [단위 테스트 (블라디미르 코리코프)](https://product.kyobobook.co.kr/detail/S000001805070) 책 읽고 스터디
-    - 2월: 1부
-    - 3월: 2부
+    - ~2월 16일: 1부
+    - ~3월 8일: 2부
     - 4월: 3부
     - 5월: 4부
 - 이후? [더 자바, 애플리케이션을 테스트하는 다양한 방법](https://www.inflearn.com/course/the-java-application-test#curriculum) 수강
